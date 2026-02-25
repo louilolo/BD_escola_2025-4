@@ -42,10 +42,10 @@ CREATE TABLE Turma (
 
 
 CREATE TABLE Aluno (
-    matricula BIGINT PRIMARY KEY, -- A "caixa" grande para os 12 dígitos
-    nome VARCHAR(100) NOT NULL,    -- Texto de até 100 caracteres
-    data_nascimento DATE,          -- Formato YYYY-MM-DD
-    id_turma INT                   -- Referência para a tabela Turma
+    matricula BIGINT PRIMARY KEY, 
+    nome VARCHAR(100) NOT NULL,    
+    data_nascimento DATE,          
+    FOREIGN KEY (id_turma) REFERENCES Turma(id_turma)
 );
 
 
@@ -54,7 +54,7 @@ CREATE TABLE Alocacao (
     id_professor INT,
     id_disciplina INT,
     id_turma INT,
-    periodo_letivo VARCHAR(20),
+    periodo_letivo DATE,
     FOREIGN KEY (id_professor) REFERENCES Professor(id_professor),
     FOREIGN KEY (id_disciplina) REFERENCES Disciplina(id_disciplina),
     FOREIGN KEY (id_turma) REFERENCES Turma(id_turma)
