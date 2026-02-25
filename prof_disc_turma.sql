@@ -55,16 +55,16 @@ INSERT INTO Professor_Efetivo (id_professor, num_carteira_trabalho, salario) VAL
 INSERT INTO Professor_Treinamento (id_professor, seguro, data_inicio, data_final) VALUES 
 (6, 'APUB-SEG', '2026-01-01', '2027-01-01'), (7, 'APUB-SEG', '2026-01-01', '2027-01-01'), (8, 'UFPA-SEG', '2026-02-01', '2026-12-31'), (9, 'UFPA-SEG', '2026-01-15', '2027-01-15'), (10, 'APUB-SEG', '2026-01-01', '2027-01-01');
 INSERT INTO Alocacao (id_professor, id_disciplina, id_turma, periodo_letivo) VALUES 
-(1, 1, 1, '2026.1'),
-(2, 2, 1, '2026.1'),
-(3, 3, 1, '2026.1'),
-(4, 4, 1, '2026.1'),
-(5, 5, 1, '2026.1'),
-(6, 6, 1, '2026.1'),
-(7, 7, 1, '2026.1'),
-(8, 8, 1, '2026.1'),
-(9, 9, 1, '2026.1'),
-(10, 10, 1, '2026.1');
+(1, 1, 1, '2026-08-01'),
+(2, 2, 1, '2026-08-01'),
+(3, 3, 1, '2026-08-01'),
+(4, 4, 1, '2026-08-01'),
+(5, 5, 1, '2026-08-01'),
+(6, 6, 1, '2026-08-01'),
+(7, 7, 1, '2026-08-01'),
+(8, 8, 1, '2026-08-01'),
+(9, 9, 1, '2026-08-01'),
+(10, 10, 1, '2026-08-01');
 
 
 INSERT INTO Aluno (matricula, nome, data_nascimento, id_turma) VALUES 
