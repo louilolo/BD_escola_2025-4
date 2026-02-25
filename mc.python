@@ -1,0 +1,43 @@
+import graphviz
+
+dot = graphviz.Graph('MC', filename='mc', format='png')
+dot.attr(rankdir='TB', nodesep='0.5', ranksep='0.5')
+dot.attr('node', shape='box', style='', fontname='Helvetica', fontsize='12')
+dot.attr('edge', fontname='Helvetica', fontsize='10')
+
+dot.node('PROFESSOR', '<<table border="0" cellborder="0" cellpadding="2"><tr><td><b>PROFESSOR</b></td></tr><tr><td>idprofessor, nome, cpf, endereço</td></tr></table>>')
+dot.node('EFETIVO', '<<table border="0" cellborder="0" cellpadding="2"><tr><td><b>EFETIVO</b></td></tr><tr><td>n carteira de trabalho, salário</td></tr></table>>')
+dot.node('EM_TREINAMENTO', '<<table border="0" cellborder="0" cellpadding="2"><tr><td><b>EM TREINAMENTO</b></td></tr><tr><td>seguro, data inicial, final do treinamento</td></tr></table>>')
+
+dot.node('DISCIPLINA', '<<table border="0" cellborder="0" cellpadding="2"><tr><td><b>DISCIPLINA</b></td></tr><tr><td>iddisciplina, nome,<br/>carga horária, quant. créditos</td></tr></table>>')
+dot.node('TURMA', '<<table border="0" cellborder="0" cellpadding="2"><tr><td><b>TURMA</b></td></tr><tr><td>nome, turno, sala</td></tr></table>>')
+dot.node('ALUNO', '<<table border="0" cellborder="0" cellpadding="2"><tr><td><b>ALUNO</b></td></tr><tr><td>matrícula, nome, data de nascimento</td></tr></table>>')
+
+dot.node('ALOCACAO', '<<table border="0" cellborder="0" cellpadding="3"><tr><td><b>ALOCAÇÃO</b></td></tr><tr><td>período letivo</td></tr></table>>', shape='diamond')
+
+dot.node('MATRICULA', label='', shape='diamond')
+
+dot.edge('PROFESSOR', 'ALOCACAO', label=' (1,N)')
+dot.edge('ALOCACAO', 'DISCIPLINA', label='(1,N) ')
+dot.edge('ALOCACAO', 'TURMA', label=' (1,N)')
+
+dot.node('HERANCA', 'd', shape='triangle', width='0.6', height='0.5') 
+dot.edge('PROFESSOR', 'HERANCA', label='')
+dot.edge('HERANCA', 'EFETIVO')
+dot.edge('HERANCA', 'EM_TREINAMENTO')
+
+dot.edge('TURMA', 'MATRICULA', label=' (1,N)')
+dot.edge('MATRICULA', 'ALUNO', label=' (1,1)')
+
+with dot.subgraph() as s:
+    s.attr(rank='same')
+    s.node('PROFESSOR')
+    s.node('ALOCACAO')
+    s.node('DISCIPLINA')
+
+with dot.subgraph() as s:
+    s.attr(rank='same')
+    s.node('EFETIVO')
+    s.node('EM_TREINAMENTO')
+
+dot.render(view=True)
