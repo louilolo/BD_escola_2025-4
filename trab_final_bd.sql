@@ -42,6 +42,7 @@ CREATE TABLE Turma (
 
 
 CREATE TABLE Aluno (
+	id_turma INT,
     matricula BIGINT PRIMARY KEY, 
     nome VARCHAR(100) NOT NULL,    
     data_nascimento DATE,          
